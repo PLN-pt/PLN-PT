@@ -10,12 +10,12 @@ version 0.001
 
     # using the pln tool from the command line
     $ cat input.txt
-    A Maria tem raz�o.
+    A Maria tem razão.
     $ pln dep_parser input.txt
     1   A       _       DET     art|<artd>|F|S  Definite=Def|Gender=Fem|Number=Sing|PronType=Art|fPOS=DET++art|<artd>|F|S       2       det     _       _
     2   Maria   _       PROPN   prop|F|S        Gender=Fem|Number=Sing|fPOS=PROPN++prop|F|S     3       nsubj   _       _
     3   tem     _       VERB    v-fin|PR|3S|IND Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|fPOS=VERB++v-fin|PR|3S|IND        0       ROOT    _       _
-    4   raz�o.  _       NOUN    n|F|S   Gender=Fem|Number=Sing|fPOS=NOUN++n|F|Sdobj     _       _
+    4   razão.  _       NOUN    n|F|S   Gender=Fem|Number=Sing|fPOS=NOUN++n|F|Sdobj     _       _
 
 # DESCRIPTION
 
