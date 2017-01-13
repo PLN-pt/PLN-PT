@@ -7,6 +7,7 @@ use warnings;
 use JSON::MaybeXS ();
 use CHI;
 use Digest::MD5 qw/md5_base64/;
+use Encode;
 
 sub new {
   my ($class, $url) = @_;
@@ -47,7 +48,7 @@ sub dep_parser {
 sub _post {
   my ($self, $url, $text, $opts) = @_;
 
-  my $key = $url . '-' . md5_base64($text);
+  my $key = $url . '-' . md5_base64(Encode::encode_utf8($text));
   my $data = $self->{cache}->get($key);
 
   unless ($data) {
