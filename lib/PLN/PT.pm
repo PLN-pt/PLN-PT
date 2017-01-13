@@ -5,10 +5,14 @@ use strict;
 use warnings;
 
 use JSON::MaybeXS ();
+use CHI;
+use Digest::MD5 qw/md5_base64/;
 
 sub new {
   my ($class, $url) = @_;
   my $self = bless( {url=>$url}, $class);
+
+  $self->{cache} = CHI->new( driver => 'Memory', global => 1 );
 
   return $self;
 }
@@ -43,9 +47,15 @@ sub dep_parser {
 sub _post {
   my ($self, $url, $text, $opts) = @_;
 
-  my $data = `echo "$text" | /usr/bin/curl -s -X POST -d \@- $url`;
-  return $data if ($opts->{output} and $opts->{output} eq 'raw');
+  my $key = $url . '-' . md5_base64($text);
+  my $data = $self->{cache}->get($key);
 
+  unless ($data) {
+    $data = `echo "$text" | /usr/bin/curl -s -X POST -d \@- $url`;
+    $self->{cache}->set($key, $data);
+  }
+
+  return $data if ($opts->{output} and $opts->{output} eq 'raw');
   return JSON::MaybeXS->new(utf8 => 1)->decode($data);
 }
 
