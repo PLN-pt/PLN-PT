@@ -7,12 +7,14 @@ use warnings;
 use JSON::MaybeXS ();
 use CHI;
 use Digest::MD5 qw/md5_base64/;
+use LWP::UserAgent;
 use Encode;
 
 sub new {
   my ($class, $url) = @_;
   my $self = bless( {url=>$url}, $class);
 
+  $self->{ua} = LWP::UserAgent->new;
   $self->{cache} = CHI->new( driver => 'Memory', global => 1 );
 
   return $self;
@@ -52,8 +54,18 @@ sub _post {
   my $data = $self->{cache}->get($key);
 
   unless ($data) {
-    $data = `echo "$text" | /usr/bin/curl -s -X POST -d \@- $url`;
-    $self->{cache}->set($key, $data);
+    my $req = HTTP::Request->new(POST => $url);
+    $req->content($text);
+
+    my $res = $self->{ua}->request($req);
+    if ($res->is_success) {
+      $data = $res->decoded_content;
+      $self->{cache}->set($key, $data);
+    }
+    else {
+      print STDERR "HTTP POST error: ", $res->code, " - ", $res->message, "\n";
+      return undef;
+    }
   }
 
   return $data if ($opts->{output} and $opts->{output} eq 'raw');
