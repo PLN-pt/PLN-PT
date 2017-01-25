@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-# PODNAME: pln.pt
-# ABSTRACT: command line interface to api.pln.pt
+# PODNAME: pln-pt
+# ABSTRACT: command line interface to http://api.pln.pt
 
 use warnings;
 use strict;
@@ -20,7 +20,7 @@ else {
 }
 
 unless ($input) {
-  print "Usage: pln <operation> <input>\n",
+  print "Usage: pln-pt <operation> <input>\n",
           "  operation: tokenizer, tagger, dep_parser\n";
   exit;
 }
