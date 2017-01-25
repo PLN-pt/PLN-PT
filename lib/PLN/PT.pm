@@ -1,5 +1,5 @@
 package PLN::PT;
-# ABSTRACT: interface for the pln.pt webservice
+# ABSTRACT: interface for the http://pln.pt webservice
 
 use strict;
 use warnings;
@@ -100,6 +100,10 @@ __END__
 
 =head1 SYNOPSIS
 
+    # using as a lib
+    my $pln = PLN::PT->new('http://api.pln.pt');
+    my $data = $pln->tagger($txt);
+
     # using the pln tool from the command line
     $ cat input.txt
     A Maria tem razão.
@@ -113,7 +117,7 @@ __END__
 =head1 DESCRIPTION
 
 This module implements an interface for the Natural Language Processing
-(NLP) webservide provided by http://pln.pt.
+(NLP) webservice provided by http://pln.pt.
 
 =func new
 
@@ -125,4 +129,7 @@ This module implements an interface for the Natural Language Processing
 
 =func dep_parser
 
+=head1 ACKNOWLEDGEMENTS
+
+This work is partially supported by the "Programa Operacional da Região Norte", NORTE2020, in the context of project NORTE-01-0145-FEDER-000037.
 
