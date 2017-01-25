@@ -12,10 +12,10 @@ version 0.001
     my $pln = PLN::PT->new('http://api.pln.pt');
     my $data = $pln->tagger($txt);
 
-    # using the pln tool from the command line
+    # using the pln-pt tool from the command line
     $ cat input.txt
     A Maria tem razão.
-    $ pln dep_parser input.txt
+    $ pln-pt dep_parser input.txt
     1   A       _       DET     art|<artd>|F|S  Definite=Def|Gender=Fem|Number=Sing|PronType=Art|fPOS=DET++art|<artd>|F|S       2       det     _       _
     2   Maria   _       PROPN   prop|F|S        Gender=Fem|Number=Sing|fPOS=PROPN++prop|F|S     3       nsubj   _       _
     3   tem     _       VERB    v-fin|PR|3S|IND Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|fPOS=VERB++v-fin|PR|3S|IND        0       ROOT    _       _
