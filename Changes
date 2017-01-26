@@ -1,5 +1,11 @@
 {{$NEXT}}
 
+0.002     2017-01-26 11:45:07+00:00 Europe/Lisbon
+
+    * Improve documentation.
+    * Add more examples.
+    * Minor bug fixes.
+
 0.001     2017-01-25 11:37:22+00:00 Europe/Lisbon
 
     * Initial release.
