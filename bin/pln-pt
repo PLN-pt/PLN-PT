@@ -8,22 +8,16 @@ use strict;
 use PLN::PT;
 use Path::Tiny;
 
+# get some args from the command line
 my $op = shift;
-
-my $input;
 my $file = shift;
-if ($file) {
-  $input = path($file)->slurp_raw;
-}
-else {
-  $input = join('', <STDIN>);
-}
+_help() unless $op;
 
-unless ($input) {
-  print "Usage: pln-pt <operation> <input>\n",
-          "  operation: tokenizer, tagger, dep_parser\n";
-  exit;
-}
+# get input from file, or stdin if no file arg is given
+my $input;
+if ($file) { $input = path($file)->slurp_raw; }
+else { $input = join('', <STDIN>); }
+_help() unless $input;
 
 my $pln = PLN::PT->new('http://api.pln.pt');
 my $opts = { output=>'raw' };
@@ -31,10 +25,17 @@ my $opts = { output=>'raw' };
 if (lc($op) eq 'tokenizer') {
   print $pln->tokenizer($input, $opts);
 }
-if (lc($op) eq 'tagger') {
+elsif (lc($op) eq 'tagger') {
   print $pln->tagger($input, $opts);
 }
-if (lc($op) eq 'dep_parser') {
+elsif (lc($op) eq 'dep_parser') {
   print $pln->dep_parser($input, $opts);
+}
+else { _help() }
+
+sub _help {
+  print "Usage: pln-pt <operation> <input>\n",
+          "  operation: tokenizer, tagger, dep_parser\n";
+  exit;
 }
 
