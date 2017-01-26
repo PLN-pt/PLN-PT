@@ -1,6 +1,6 @@
 # NAME
 
-PLN::PT - interface for the http://pln.pt webservice
+PLN::PT - interface for the http://pln.pt web service
 
 # VERSION
 
@@ -10,37 +10,73 @@ version 0.001
 
     # using as a lib
     my $pln = PLN::PT->new('http://api.pln.pt');
-    my $data = $pln->tagger($txt);
+    my $data = $pln->tagger($txt);  # [['A','o',''DA0FS0','0.675415'], ...
 
     # using the pln-pt tool from the command line
-    $ cat input.txt
-    A Maria tem razão.
-    $ pln-pt dep_parser input.txt
-    1   A       _       DET     art|<artd>|F|S  Definite=Def|Gender=Fem|Number=Sing|PronType=Art|fPOS=DET++art|<artd>|F|S       2       det     _       _
-    2   Maria   _       PROPN   prop|F|S        Gender=Fem|Number=Sing|fPOS=PROPN++prop|F|S     3       nsubj   _       _
-    3   tem     _       VERB    v-fin|PR|3S|IND Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|fPOS=VERB++v-fin|PR|3S|IND        0       ROOT    _       _
-    4   razão.  _       NOUN    n|F|S   Gender=Fem|Number=Sing|fPOS=NOUN++n|F|Sdobj     _       _
+    $ echo "A Maria tem razão . " | pln-pt tagger
+    A o DA0FS0 0.675415
+    Maria maria NCFS000 1
+    tem ter VMIP3S0 0.999287
+    razão razão NCFS000 0.65
+    . . Fp 1
 
 # DESCRIPTION
 
 This module implements an interface for the Natural Language Processing
-(NLP) webservice provided by http://pln.pt.
+(NLP) web service provided by [http://pln.pt](http://pln.pt).
 
-# FUNCTIONS
-
-## new
+# METHODS
 
 ## new
+
+Create new object, given as argument the base endpoint for the web service.
+
+Once the object is created, a set of methods described below can be used to
+access several operations in the API. All the methods return a data
+structure with the corresponding result, typically a list of tokens with
+some extra information depending on the operation used.
 
 ## tokenizer
 
+Tokenize the text given as argument, i.e. split the text in tokens (words
+by default), for more information on the tokenization operation
+visit [http://pln.pt/api](http://pln.pt/api).
+
+    $ echo "A Maria tem razão ." | pln-pt tokenizer
+    A
+    Maria
+    tem
+    razão
+    .
+
 ## tagger
+
+Part-of-speech tagging the tokens in the text, given as argument, for more
+information on the tagging operation visit [http://pln.pt/api](http://pln.pt/api).
+
+    $ echo "A Maria tem razão ." | pln-pt tagger
+    A o DA0FS0 0.675415
+    Maria maria NCFS000 1
+    tem ter VMIP3S0 0.999287
+    razão razão NCFS000 0.65
+    . . Fp 1
 
 ## dep\_parser
 
+Build a dependency tree for the text given as argument, for more information
+on the dependency tree visit [http://pln.pt/api](http://pln.pt/api).
+
+    $ echo "A Maria tem razão ." | pln-pt dep_parser
+    1   A       _       DET     art|<artd>|F|S  (...)   2       det     _       _
+    2   Maria   _       PROPN   prop|F|S        (...)   3       nsubj   _       _
+    3   tem     _       VERB    v-fin|PR|3S|IND (...)   0       ROOT    _       _
+    4   razão   _       NOUN    n|F|S   (...)   3       dobj    _       _
+    5   .       _       PUNCT   punc    (...)   3       punct   _
+
 # ACKNOWLEDGEMENTS
 
-This work is partially supported by the "Programa Operacional da Região Norte", NORTE2020, in the context of project NORTE-01-0145-FEDER-000037.
+This work is partially supported by the "Programa Operacional da Região Norte",
+NORTE2020, in the context of project NORTE-01-0145-FEDER-000037.
 
 # AUTHOR
 
