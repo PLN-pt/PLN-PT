@@ -4,7 +4,7 @@ PLN::PT - interface for the http://pln.pt web service
 
 # VERSION
 
-version 0.002
+version 0.003
 
 # SYNOPSIS
 
@@ -75,8 +75,11 @@ on the dependency tree visit [http://pln.pt/api](http://pln.pt/api).
 
 # ACKNOWLEDGEMENTS
 
-This work is partially supported by the "Programa Operacional da Região Norte",
-NORTE2020, in the context of project NORTE-01-0145-FEDER-000037.
+This work is a result of the project “SmartEGOV: Harnessing EGOV for Smart
+Governance (Foundations, methods, Tools) / NORTE-01-0145-FEDER-000037”,
+supported by Norte Portugal Regional Operational Programme (NORTE 2020),
+under the PORTUGAL 2020 Partnership Agreement, through the European Regional
+Development Fund (EFDR).
 
 # AUTHOR
 

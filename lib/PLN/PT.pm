@@ -56,7 +56,7 @@ sub _post {
 
   unless ($data) {
     my $req = HTTP::Request->new(POST => $url);
-    $req->content($text);
+    $req->content(Encode::encode_utf8($text));
 
     my $res = $self->{ua}->request($req);
     if ($res->is_success) {
@@ -167,6 +167,9 @@ on the dependency tree visit L<http://pln.pt/api>.
 
 =head1 ACKNOWLEDGEMENTS
 
-This work is partially supported by the "Programa Operacional da Região Norte",
-NORTE2020, in the context of project NORTE-01-0145-FEDER-000037.
+This work is a result of the project “SmartEGOV: Harnessing EGOV for Smart
+Governance (Foundations, methods, Tools) / NORTE-01-0145-FEDER-000037”,
+supported by Norte Portugal Regional Operational Programme (NORTE 2020),
+under the PORTUGAL 2020 Partnership Agreement, through the European Regional
+Development Fund (EFDR).
 
