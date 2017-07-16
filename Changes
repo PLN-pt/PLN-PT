@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+    * Skip tests if no data is retrieved.
+
 0.004     2017-07-10 16:31:00+01:00 Europe/Lisbon
 
     * Add tf method for term frequency.
