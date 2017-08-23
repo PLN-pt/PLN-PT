@@ -73,10 +73,17 @@ on the dependency tree visit [http://pln.pt/api](http://pln.pt/api).
     4   razão   _       NOUN    n|F|S   (...)   3       dobj    _       _
     5   .       _       PUNCT   punc    (...)   3       punct   _
 
+## tf
+
+Compute term frequency given a text.
+
+## stopwords
+
+Retrieve lists of stop words.
+
 # ACKNOWLEDGEMENTS
 
-This work is a result of the project “SmartEGOV: Harnessing EGOV for Smart
-Governance (Foundations, methods, Tools) / NORTE-01-0145-FEDER-000037”,
+This work is partially supported by the project “SmartEGOV: Harnessing EGOV for Smart Governance (Foundations, methods, Tools) / NORTE-01-0145-FEDER-000037”,
 supported by Norte Portugal Regional Operational Programme (NORTE 2020),
 under the PORTUGAL 2020 Partnership Agreement, through the European Regional
 Development Fund (EFDR).
