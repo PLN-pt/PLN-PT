@@ -49,6 +49,11 @@ visit [http://pln.pt/api](http://pln.pt/api).
     razão
     .
 
+## morph\_analyzer
+
+Morphologic analysis for a single word, given as argument. For more
+information on the tagging operation visit [http://pln.pt/api](http://pln.pt/api).
+
 ## tagger
 
 Part-of-speech tagging the tokens in the text, given as argument, for more

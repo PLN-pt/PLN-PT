@@ -29,6 +29,17 @@ sub tokenizer {
   return $self->_post($url, $text, $opts);
 }
 
+sub morph_analyzer {
+  my ($self, $word, $opts) = @_;
+
+  $word =~ s/\// /g; # make it sane, if someone tries to go guessing
+
+  my $url = $self->_cat('morph', $word);
+  $url .= '?' . $self->_args($opts);
+
+  return $self->_get($url, $opts);
+}
+
 sub tagger {
   my ($self, $text, $opts) = @_;
 
@@ -182,6 +193,14 @@ visit L<http://pln.pt/api>.
     tem
     razão
     .
+
+=method morph_analyzer
+
+Morphologic analysis for a single word, given as argument. For more
+information on the tagging operation visit L<http://pln.pt/api>.
+
+    $ echo cavalo | pln-pt morph
+    cavalo cavalo NCMS000 0.914011 cavalar VMIP1S0 0.0859891
 
 =method tagger
 

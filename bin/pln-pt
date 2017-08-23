@@ -27,6 +27,9 @@ my $opts = { output=>'raw' };
 if (lc($op) eq 'tokenizer') {
   print $pln->tokenizer($input, $opts);
 }
+elsif (lc($op) eq 'morph') {
+  print $pln->morph_analyzer($input, $opts);
+}
 elsif (lc($op) eq 'tagger') {
   print $pln->tagger($input, $opts);
 }
