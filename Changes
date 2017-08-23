@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+    * Add tf option to command line tool.
+
 0.005     2017-07-16 15:06:13+01:00 Europe/Lisbon
 
     * Skip tests if no data is retrieved.
