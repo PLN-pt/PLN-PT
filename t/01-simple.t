@@ -23,7 +23,7 @@ SKIP: {
 # morph_analyzer
 SKIP: {
   $data = $nlp->morph_analyzer('cavalgar');
-  skip 'No data.', 2 unless $data;
+  skip 'No data.', 4 unless $data;
 
   ok( scalar(@$data) == 6, 'word has 5 analysis' );
   ok( $data->[0] eq 'cavalgar', 'first token is analyzed word' );

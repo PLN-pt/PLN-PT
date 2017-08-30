@@ -4,7 +4,7 @@ PLN::PT - interface for the http://pln.pt web service
 
 # VERSION
 
-version 0.005
+version 0.006
 
 # SYNOPSIS
 
@@ -54,6 +54,9 @@ visit [http://pln.pt/api](http://pln.pt/api).
 Morphologic analysis for a single word, given as argument. For more
 information on the tagging operation visit [http://pln.pt/api](http://pln.pt/api).
 
+    $ echo cavalo | pln-pt morph
+    cavalo cavalo NCMS000 0.914011 cavalar VMIP1S0 0.0859891
+
 ## tagger
 
 Part-of-speech tagging the tokens in the text, given as argument, for more
@@ -93,9 +96,10 @@ supported by Norte Portugal Regional Operational Programme (NORTE 2020),
 under the PORTUGAL 2020 Partnership Agreement, through the European Regional
 Development Fund (EFDR).
 
-# AUTHOR
+# AUTHORS
 
-Nuno Carvalho <smash@cpan.org>
+- Nuno Carvalho <smash@cpan.org>
+- Alberto Simões <ambs@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
