@@ -34,7 +34,7 @@ sub morph_analyzer {
 
   $word =~ s/\// /g; # make it sane, if someone tries to go guessing
 
-  my $url = $self->_cat('morph', $word);
+  my $url = $self->_cat('morph_analyzer', $word);
   $url .= '?' . $self->_args($opts);
 
   return $self->_get($url, $opts);
@@ -99,7 +99,7 @@ sub _post {
   }
 
   return $data if ($opts->{output} and $opts->{output} eq 'raw');
-  return JSON::MaybeXS->new(utf8 => 1)->decode($data);
+  return JSON::MaybeXS->new(utf8 => 1)->decode(Encode::encode_utf8($data));
 }
 
 sub _get {

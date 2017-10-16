@@ -7,8 +7,6 @@ use strict;
 
 use PLN::PT;
 use Path::Tiny;
-binmode(STDOUT, ':utf8');
-binmode(STDIN, ':utf8');
 
 # get some args from the command line
 my $op = shift;
