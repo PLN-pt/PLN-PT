@@ -1,6 +1,7 @@
 {{$NEXT}}
 
     * Enconding (utf-8) tweaks.
+    * Update 'morph_analyzer' tests.
 
 0.006     2017-08-30 10:08:38+01:00 Europe/Lisbon
 
