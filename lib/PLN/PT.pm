@@ -4,11 +4,12 @@ package PLN::PT;
 use strict;
 use warnings;
 
-use JSON::MaybeXS ();
+use JSON::XS;
 use CHI;
 use Digest::MD5 qw/md5_base64/;
 use LWP::UserAgent;
 use Encode;
+use utf8::all;
 
 sub new {
   my ($class, $url) = @_;
@@ -84,12 +85,14 @@ sub _post {
 
   unless ($data) {
     my $req = HTTP::Request->new(POST => $url);
+    $req->header('Content-Type', 'text/html; charset=UTF-8');
     $req->content(Encode::encode_utf8($text));
 
     my $res = $self->{ua}->request($req);
     if ($res->is_success) {
       $data = $res->decoded_content;
       $data = $res->content unless $data;
+      $data = Encode::decode_utf8($data);
       $self->{cache}->set($key, $data);
     }
     else {
@@ -99,7 +102,7 @@ sub _post {
   }
 
   return $data if ($opts->{output} and $opts->{output} eq 'raw');
-  return JSON::MaybeXS->new(utf8 => 1)->decode(Encode::encode_utf8($data));
+  return JSON::XS->new->decode($data);
 }
 
 sub _get {
@@ -115,6 +118,7 @@ sub _get {
     if ($res->is_success) {
       $data = $res->decoded_content;
       $data = $res->content unless $data;
+      $data = Encode::decode_utf8($data);
       $self->{cache}->set($key, $data);
     }
     else {
@@ -124,7 +128,7 @@ sub _get {
   }
 
   return $data if ($opts->{output} and $opts->{output} eq 'raw');
-  return JSON::MaybeXS->new(utf8 => 1)->decode($data);
+  return JSON::XS->new->decode($data);
 }
 
 sub _cat {
