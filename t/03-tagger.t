@@ -16,9 +16,9 @@ SKIP: {
   skip 'No data.', 5 unless $data;
 
   ok( scalar(@$data) == 5, 'sentence has 5 tokens' );
-  ok( $data->[0]->[1] eq 'o', 'first token lemma is "o"' );
-  ok( $data->[0]->[2] eq 'DA0FS0', 'first token tag is "DA0FS0"' );
-  ok( $data->[-1]->[1] eq '.', 'last token lemma is "."' );
-  ok( $data->[-1]->[2] eq 'Fp', 'last token tag is "Fp"' );
+  ok( $data->[0]->{lemma} eq 'o', 'first token lemma is "o"' );
+  ok( $data->[0]->{pos} eq 'DA0FS0', 'first token pos is "DA0FS0"' );
+  ok( $data->[-1]->{lemma} eq '.', 'last token lemma is "."' );
+  ok( $data->[-1]->{pos} eq 'Fp', 'last token tag is "Fp"' );
 }
 

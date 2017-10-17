@@ -16,9 +16,9 @@ SKIP: {
   skip 'No data.', 5 unless $data;
 
   ok( scalar(@$data) == 5, 'sentence has 5 tokens' );
-  ok( $data->[0]->[6] eq '2', 'first token parent is "2"' );
-  ok( $data->[0]->[7] eq 'det', 'first token rule is "det"' );
-  ok( $data->[-1]->[6] eq '3', 'last token parent is "3"' );
-  ok( $data->[-1]->[7] eq 'punct', 'last token rule is "punct"' );
+  ok( $data->[0]->{head} eq '2', 'first token head is "2"' );
+  ok( $data->[0]->{deprel} eq 'det', 'first token deprel is "det"' );
+  ok( $data->[-1]->{head} eq '3', 'last token head is "3"' );
+  ok( $data->[-1]->{deprel} eq 'punct', 'last token deprel is "punct"' );
 }
 

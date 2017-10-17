@@ -16,7 +16,7 @@ SKIP: {
   skip 'No data.', 3 unless $data;
 
   ok( scalar(@$data) == 5, 'word has 5 analysis' );
-  ok( $data->[1]{lemma} eq 'cavalgar', 'first analysis lemma' );
-  ok( $data->[1]{analysis} =~ m!^V!, 'first analysis as a verb' );
+  ok( $data->[0]->{lemma} eq 'cavalgar', 'first analysis lemma' );
+  ok( $data->[0]->{pos} =~ m!^V!, 'first analysis as a verb' );
 }
 
