@@ -1,7 +1,10 @@
 {{$NEXT}}
 
+0.007     2017-10-27 11:35:45+01:00 Europe/Lisbon
+
     * Enconding (utf-8) tweaks.
     * Update tests.
+    * Updates concerning new results from the API.
 
 0.006     2017-08-30 10:08:38+01:00 Europe/Lisbon
 
