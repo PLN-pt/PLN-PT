@@ -13,7 +13,7 @@ my $data;
 # dep_parser
 SKIP: {
   $data = $nlp->dep_parser('A Maria tem razão .');
-  skip 'No data.', 5 unless $data;
+  skip 'No data.', 5 unless ($data and @$data);
 
   ok( scalar(@$data) == 5, 'sentence has 5 tokens' );
   ok( $data->[0]->{head} eq '2', 'first token head is "2"' );

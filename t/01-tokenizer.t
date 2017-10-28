@@ -13,7 +13,7 @@ my $data;
 # tokenizer
 SKIP: {
   $data = $nlp->tokenizer('A Maria tem razão .');
-  skip 'No data.', 3 unless $data;
+  skip 'No data.', 3 unless ($data and @$data);
 
   ok( scalar(@$data) == 5, 'sentence has 5 tokens' );
   ok( $data->[0] eq 'A', 'first token in "A"' );

@@ -4,7 +4,7 @@ PLN::PT - interface for the http://pln.pt web service
 
 # VERSION
 
-version 0.007
+version 0.008
 
 # SYNOPSIS
 

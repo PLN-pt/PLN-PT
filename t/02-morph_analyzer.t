@@ -13,7 +13,7 @@ my $data;
 # morph_analyzer
 SKIP: {
   $data = $nlp->morph_analyzer('cavalgar');
-  skip 'No data.', 3 unless $data;
+  skip 'No data.', 3 unless ($data and @$data);
 
   ok( scalar(@$data) == 5, 'word has 5 analysis' );
   ok( $data->[0]->{lemma} eq 'cavalgar', 'first analysis lemma' );

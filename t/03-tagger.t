@@ -13,7 +13,7 @@ my $data;
 # tagger
 SKIP: {
   $data = $nlp->tagger('A Maria tem razão .');
-  skip 'No data.', 5 unless $data;
+  skip 'No data.', 5 unless ($data and @$data);
 
   ok( scalar(@$data) == 5, 'sentence has 5 tokens' );
   ok( $data->[0]->{lemma} eq 'o', 'first token lemma is "o"' );
